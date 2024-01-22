@@ -1,17 +1,21 @@
 
 
-# pip install SpeechRecognition
-# pip install pyaudio
-# pip install PyAutoGUI
 
+
+# pip install SpeechRecognition
+# pip install PyAutoGUI
+# pip install pyaudio
 
 
 
 import speech_recognition
 import pyautogui as pg
 
+
 sr = speech_recognition.Recognizer()
 sr.pause_threshold = 0.5
+
+
 
 
 def Error():
@@ -30,9 +34,7 @@ def listen_command_voice():
         except: 
             speech_recognition.UnknownValueError: Error()
                
-        
-        
-             
+
              
 def google_chrome_youTube():
     pg.hotkey('winleft')
@@ -84,19 +86,26 @@ def openWindow():
     pg.hotkey('ctrl','t')
 
 
+def powerOff():
+    pg.hotkey('winleft','r')
+    pg.typewrite("shutdown /s /t 0 \n")
+
+def restart():
+    pg.hotkey('winleft','r')
+    pg.typewrite("shutdown /r /t 0")
+    pg.hotkey(['enter'])
+
 
 
 
 
 # pg.prompt("red","rere")
-
-
-
-# pg.alert("Привіт я помічник ПК,Емма","ПОВІДОМЛЕНЯ!")
+# pg.alert("Привіт я помічник ПК,Емма","ПОВІДОМЛЕНЯ!") 
 
 while True:
-    
-    
+ 
+
+
     print("я вас слухаю")
     voice = listen_command_voice()
     print(voice)
@@ -114,8 +123,11 @@ while True:
         openWindow()
     if voice == "закрий вкладку":
         exitWindow()
-        
-        
+    if voice == "вимкни комп'ютер":
+        powerOff()
+    if voice == "перезапусти комп'ютер":
+        restart()
+  
     else:
         
         print("слухаю")
